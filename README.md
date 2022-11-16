@@ -1,4 +1,4 @@
-#Project:
+# Project:
 It’s known that emails can have attachments, some even have other emails as attachments. This
 allows them to have attachments at any level of nesting. Emails can be stored in so called
 Internet Message Format, ﬁles in this format usually have .eml extension.
