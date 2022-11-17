@@ -37,6 +37,17 @@ public class FileUtils {
         return outputDirectory;
     }
 
+    public static File getResultFile(File outputDirectory, String resultFileName, AtomicLong fileNameIncremental) {
+        File outputFile = new File(outputDirectory, resultFileName);
+        if(outputFile.exists()){
+            do{
+                outputFile = new File(outputDirectory,
+                        getSyntheticIncrementalName(fileNameIncremental.getAndIncrement()));
+            } while (outputFile.exists());
+        }
+        return outputFile;
+    }
+
     public static String getResultFileName(String[] contentTypeParts, AtomicLong fileNameIncremental) {
         Optional<String> name = Arrays.stream(contentTypeParts).filter(s -> s.contains("name=")).findFirst();
         if(name.isPresent()){
